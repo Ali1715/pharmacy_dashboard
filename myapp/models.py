@@ -1,14 +1,14 @@
 from django.db import models
 
-# Create your models here.
-class Order(models.Model):
 
-    product_category = models.CharField(max_length=10)
-    payment_method = models.CharField(max_length=10)
-    shipping_cost = models.CharField(max_length=10)
-    unit_price = models.DecimalField(max_digits=5, decimal_places=2)
+class Factura(models.Model):
+    nit = models.BigIntegerField()
+    fecha = models.DateTimeField()
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    nota = models.CharField(max_length=255)
+    tipo = models.CharField(max_length=1)
+    clienteID = models.IntegerField()
+    usuarioID = models.IntegerField()
 
-    class Meta:
-        app_label = 'myapp'
-
-        
+    def __str__(self):
+        return f'Factura {self.id}'

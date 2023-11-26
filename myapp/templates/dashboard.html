@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <!-- Agrega enlaces a Bootstrap y Chart.js (CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
@@ -13,26 +14,183 @@
     <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.flexmonster.com/demo.css">
+
+
+
+      <!-- Favicon - loaded as static -->
+  <link rel="icon" href="/myapp/static/assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/myapp/static/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/myapp/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="/myapp/static/assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 <body>
-
+  <div class="header bg-dark pb-lg-3">
+    <div class="container-fluid">
+      <div class="header-body">
 <!-- Navbar -->
 <nav class="navbar navbar-dark bg-dark">
   <span class="navbar-brand mb-0 h1">Mi Dashboard</span>
+  <div class="col-md-6">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <!--Button for go to dashboard_felxmonster-->
+    <a href="{% url 'dashboard_flexmonster' %}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Area de trabajo</a>
+    </form>
+    
+  </div>
 </nav>
+<!--Sidebar panel, para agregar filtros a mis graficas de char.js-->
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block  sidebar" style="background-color:slategrey">
+      <div class="sidebar-sticky">
+        <!--Aqui van los filtros-->
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Filtros</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
 
-<!-- Cards Deslizables -->
+        <!--Aqui van los filtros-->
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Filtro 1
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Filtro 2
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Filtro 3
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--Fin del sidebar-->
+
+
+    <!--Contenido de la pagina-->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      
+
+    <!-- Card stats -->
+    <div class="row">
+      <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+          <!-- Card body -->
+          <div class="card-body" style="background-color: lightblue;">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">VENTAS TOTALES</h5>
+                <span id="totalVentas" class="h2 font-weight-bold mb-0">00.00</span>
+                         
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                  <i class="ni ni-active-40"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+              <span id="porcentajeCambio" class="text-success mr-2"><i class="fa fa-arrow-up"></i>0.0%</span>
+              <span class="text-nowrap">Since last month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+          <!-- Card body -->
+          <div class="card-body" style="background-color:beige">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Tasa de Obsolencia</h5>
+                <span class="h2 font-weight-bold mb-0">2,356</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                  <i class="ni ni-chart-pie-35"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+              <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+              <span class="text-nowrap">Since last month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+          <!-- Card body -->
+          <div class="card-body" style="background-color:darksalmon">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Rotacion de Inventario</h5>
+                <span class="h2 font-weight-bold mb-0">924</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                  <i class="ni ni-money-coins"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+              <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+              <span class="text-nowrap">Since last month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+          <!-- Card body -->
+          <div class="card-body" style="background-color:skyblue">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Valor de Inventario</h5>
+                <span class="h2 font-weight-bold mb-0">49,65%</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                  <i class="ni ni-chart-bar-32"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+              <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+              <span class="text-nowrap">Since last month</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 <div class="container mt-4">
   <div class="card-deck">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Ventas Totales</h5>
+        <h5 class="card-title">Analisis de Estacionalidad</h5>
         <p class="card-text">1020</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Crecimiento</h5>
+        <h5 class="card-title">Niveles de Inventario</h5>
         <p class="card-text">8% más que ayer</p>
       </div>
     </div>
@@ -58,8 +216,27 @@
 <!-- Sección de Lista de Ventas y Gráfico Pastel -->
 <div class="container mt-4">
   <div class="row">
-    <!-- Lista de Ventas -->
-<div class="col-md-6">
+ 
+   <!-- Las 10 Tendencia de Temporada de Productos mostradados en pastel -->
+   <di>
+    <div class="card-body bg-light" style="width:550px;">   
+      <h3 class="card-title">Tendencias de Temporada</h3>
+    </div>
+  </div>
+ </di>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+    
+     <!-- Gráfico Pastel -->
+     <canvas id="graficoPastel"></canvas>
+    
+
+ 
+     <!-- Lista de Ventas -->
+   
+  </div>
+  <div class="col-md-6">
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Listado de Ventas</h3>
@@ -90,46 +267,37 @@
       </div>
     </div>
   </div>
+  </div>
   
-    <div class="col-md-6">
-      <!-- Gráfico Pastel -->
-      <canvas id="graficoPastel"></canvas>
+</div>
+</div>
+      </div>
     </div>
   </div>
-  <div id="pivot-table-container" data-url="{% url 'pivot_data' %}"></div>
-  <p>
-    
-  </p>
-  <p>
-
-  </p>
-<div id="pivot-chart-container"></div>
-<div id="pivotContainer"></div>
-</div>
-
 <!-- Configuración de los Gráficos con Chart.js -->
 <script>
   // Datos de ejemplo para los gráficos (reemplázalos con tus propios datos)
-  fetch('http://192.168.1.14:8000/api/productos')
+  fetch('http://144.22.133.47:8000/api/stock-product')
     .then(response => response.json())
     .then(data => {
+      
       // Configuración de gráfico de barra
       var datosBarra = {
-            labels: data.map(item => item.id).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
+            /*labels: data.productos.map(item => item.id).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
             datasets: [{
                 label: 'Cantidad de Stock ',
-                data: data.map(item => item.cantidad_stock).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
+                data: data.productos.map(item => item.cantidad_stock).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1
-            }]
+            }]*/
         };
         
         var datosLineal = {
-            labels: data.map(item => item.id),
+            labels: data.productos.map(item => item.id),
             datasets: [{
                 label: 'Cantidad en Stock por Producto',
-                data: data.map(item => item.cantidad_stock),
+                data: data.productos.map(item => item.cantidad_stock),
                 fill: false,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 2
@@ -138,9 +306,9 @@
 
    // Configuración de gráfico de pastel (ejemplo)
    var datosPastel = {
-            labels: data.map(item => item.nombre_producto).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
+            labels: data.productos.map(item => item.nombre_producto).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
             datasets: [{
-                data: data.map(item => item.cantidad_stock).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
+                data: data.productos.map(item => item.cantidad_stock).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
                 backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
                 hoverBackgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)']
             }]
@@ -178,74 +346,40 @@
 
     .catch(error => console.error('Error al obtener datos:', error));
 </script>
-
+<!-- Agrega este script al final del cuerpo de tu documento -->
 <script>
-  function processData(dataset) {
-  var result = []
-  dataset = [{
-      label: 'Crecimiento Diario',
-      data: [10, 15, 20, 18, 25],
-      fill: false,
-      borderColor: 'rgba(75, 192, 192, 1)',
-      borderWidth: 2
-    }]
-  dataset.forEach(item => result.push(item.fields));
-  return result;
-}
-$.ajax({
-  url: $("#pivot-table-container").attr("data-url"),
-  dataType: 'json',
-  success: function(data) {
-      new Flexmonster({
-          container: "#pivot-table-container",
-          componentFolder: "https://cdn.flexmonster.com/",
-          width: "100%",
-          height: 430,
-          toolbar: true,
-          report: {
-              dataSource: {
-                  type: "json",
-                  data: processData(data),
-                
+  // Datos de ejemplo para los gráficos (reemplázalos con tus propios datos)
+  fetch('http://192.168.0.7:8000/api/facturas')
+    .then(response => response.json())
+    .then(data => {
+      // Utiliza el método reduce para sumar los totales de ventas
+      const totalVentas = data.map(item => item.total).reduce((total, current) => total + current, 0);
 
-              },
-              slice: {
-                measures: [
-                {
-                    uniqueName: 'Ventas',
-                    aggregation: 'sum' // Puedes especificar la función de agregación que deseas, como 'sum', 'avg', etc.
-                }
-            ]
-              }
-              
-          }
-      });
-     
+      // Actualiza el elemento HTML con el id 'totalVentas' con el total calculado
+      document.getElementById('totalVentas').innerText = totalVentas.toLocaleString(); // Puedes usar toLocaleString para darle formato a los números
+
+     })
+    .catch(error => console.error('Error al obtener datos:', error));
     
-  }
-});
 </script>
-<!--<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      // Hacer una solicitud a la API de Laravel
-      fetch('http://192.168.0.7:8000/api/productos')
-          .then(response => response.json())
-          .then(data => {
-              // Inicializar Flexmonster con los datos obtenidos
-              new Flexmonster({
-                  container: "pivotContainer",
-                  toolbar: true,
-                  licenseKey: "TU_CLAVE_DE_LICENCIA_AQUI" ,
-                  report: {
-                      dataSource: {
-                          data: data,
-                          type: 'json'
-                      }
-                  }
-              });
-          })
-          .catch(error => console.error('Error al obtener datos:', error));
-  });
-</script>-->
+<script>
+  fetch('http://144.22.133.47:8000/api/crecimiento')
+      .then(response => response.json())
+      .then(data => {
+         // Accede directamente a la propiedad overall_growth_percentage
+         const porcentajeCambio = data.overall_growth_percentage;
+  
+         // Verifica si el elemento con el id 'porcentajeCambio' existe antes de intentar actualizarlo
+         const elementoPorcentajeCambio = document.getElementById('porcentajeCambio');
+         if (elementoPorcentajeCambio) {
+            // Actualiza el elemento HTML con el id 'porcentajeCambio' con el porcentaje calculado
+            elementoPorcentajeCambio.innerText = `${porcentajeCambio.toFixed(2)}% `; // toFixed(2) para mostrar dos decimales
+         } else {
+            console.error('Elemento con id "porcentajeCambio" no encontrado.');
+         }
+      })
+      .catch(error => console.error('Error al obtener datos:', error));
+  </script>
+  
 </body>
 </html>

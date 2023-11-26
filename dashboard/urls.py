@@ -21,7 +21,8 @@ from django.urls import path, include
 from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.grafico_view),
-    path('pivot_data/', views.pivot_data, name='pivot_data'),
+    path('', views.dashboard),
+    path('datos_facturas/', views.datos_facturas, name='datos_facturas'),
+    path('dashboard_flexmonster', views.dashboard_flexmonster, name='dashboard_flexmonster'),
 
 ]
