@@ -44,45 +44,28 @@
     </form>
     
   </div>
+  <div class="col-md-6">
+   
+
+      <!--Aqui van los filtros-->
+      <div class="btn-group" role="group" aria-label="Filtros de tiempo">
+        <button type="button" class="btn btn-secondary" id="filtroYear">Año</button>
+        <button type="button" class="btn btn-secondary" id="filtroMes">Mes</button>
+        <button type="button" class="btn btn-secondary" id="filtroSemana">Semana</button>
+      </div>
+    
+      
+
+  </div>
 </nav>
 <!--Sidebar panel, para agregar filtros a mis graficas de char.js-->
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block  sidebar" style="background-color:slategrey">
-      <div class="sidebar-sticky">
-        <!--Aqui van los filtros-->
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Filtros</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-
-        <!--Aqui van los filtros-->
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Filtro 1
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Filtro 2
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Filtro 3
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <!--Fin del sidebar-->
 
 
     <!--Contenido de la pagina-->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main role="main" class=" ml-sm-auto col-lg-12 ">
       
 
     <!-- Card stats -->
@@ -94,7 +77,7 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">VENTAS TOTALES</h5>
-                <span id="totalVentas" class="h2 font-weight-bold mb-0">00.00</span>
+                <span id="totalVentas" class="h2 font-weight-bold mb-0">$00.00 </span>
                          
               </div>
               <div class="col-auto">
@@ -105,7 +88,7 @@
             </div>
             <p class="mt-3 mb-0 text-sm">
               <span id="porcentajeCambio" class="text-success mr-2"><i class="fa fa-arrow-up"></i>0.0%</span>
-              <span class="text-nowrap">Since last month</span>
+              <span class="text-nowrap">Desde el mes pasado</span>
             </p>
           </div>
         </div>
@@ -117,7 +100,7 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">Tasa de Obsolencia</h5>
-                <span class="h2 font-weight-bold mb-0">2,356</span>
+                <span class="h2 font-weight-bold mb-0">356 productos</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -127,7 +110,7 @@
             </div>
             <p class="mt-3 mb-0 text-sm">
               <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-              <span class="text-nowrap">Since last month</span>
+              <span class="text-nowrap">Desde el mes pasado</span>
             </p>
           </div>
         </div>
@@ -139,7 +122,7 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">Rotacion de Inventario</h5>
-                <span class="h2 font-weight-bold mb-0">924</span>
+                <span class="h2 font-weight-bold mb-0">3 veces este mes</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -149,7 +132,7 @@
             </div>
             <p class="mt-3 mb-0 text-sm">
               <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-              <span class="text-nowrap">Since last month</span>
+              <span class="text-nowrap">Desde el mes pasado</span>
             </p>
           </div>
         </div>
@@ -161,7 +144,7 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">Valor de Inventario</h5>
-                <span class="h2 font-weight-bold mb-0">49,65%</span>
+                <span class="h2 font-weight-bold mb-0">$00,00 </span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -171,7 +154,7 @@
             </div>
             <p class="mt-3 mb-0 text-sm">
               <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-              <span class="text-nowrap">Since last month</span>
+              <span class="text-nowrap">Desde el mes pasado</span>
             </p>
           </div>
         </div>
@@ -180,57 +163,78 @@
 
 
 
-<div class="container mt-4">
-  <div class="card-deck">
+<div class="container mt-4  " style="max-width: -webkit-fill-available;">
+  
+  <div class="card-deck" >
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Analisis de Estacionalidad</h5>
-        <p class="card-text">1020</p>
+        <p class="card-text"></p>
+      
       </div>
     </div>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Niveles de Inventario</h5>
-        <p class="card-text">8% más que ayer</p>
+        <p class="card-text"> Existencia Actual por Producto</p>
       </div>
     </div>
     <!-- Agrega más cards según sea necesario -->
   </div>
+
+
 </div>
 
 <!-- Sección de Gráficos -->
-<div class="container mt-4">
+<div class="container mt-6" style="max-width: -webkit-fill-available;"  >
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 ">
       <!-- Gráfico de Barra -->
-      <canvas id="graficoBarra" width="400" height="400"></canvas>
-
+  
+   <canvas id="tendenciasEstacionalesChart" width="400" height="400"></canvas>
     </div>
     <div class="col-md-6">
-      <!-- Gráfico de Crecimiento Lineal -->
-      <canvas id="graficoLineal"></canvas>
+        <!-- Gráfico Barra -->
+        <canvas id="graficoBarra" width="400" height="400"></canvas>
+
+
     </div>
   </div>
 </div>
 
 <!-- Sección de Lista de Ventas y Gráfico Pastel -->
-<div class="container mt-4">
-  <div class="row">
- 
-   <!-- Las 10 Tendencia de Temporada de Productos mostradados en pastel -->
-   <di>
-    <div class="card-body bg-light" style="width:550px;">   
-      <h3 class="card-title">Tendencias de Temporada</h3>
+<div class="container mt-4  " style="max-width: -webkit-fill-available;">
+  
+  <div class="card-deck" >
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Tendencias de Temporada</h5>
+        <p class="card-text"></p>
+      
+      </div>
     </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Pronostico de demandas</h5>
+        <p class="card-text">Precisión del Pronóstico de Demanda</p>
+      </div>
+    </div>
+    <!-- Agrega más cards según sea necesario -->
   </div>
- </di>
-  </div>
+
+
+</div>  
   <div class="row">
+    
   <div class="col-md-6">
-    
-     <!-- Gráfico Pastel -->
-     <canvas id="graficoPastel"></canvas>
-    
+         <!-- Gráfico Pastel -->
+         <canvas id="graficoPastel"></canvas>
+
+  </div>
+  <div class="col-md-6">
+       
+      <!-- Gráfico de Crecimiento Lineal -->
+      <canvas id="graficoLinealVentas"></canvas>
 
  
      <!-- Lista de Ventas -->
@@ -239,30 +243,9 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Listado de Ventas</h3>
-        <ul class="list-group">
-          <!-- Datos Estáticos para la Lista de Ventas -->
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Fecha 1</span>
-            <span class="badge badge-primary badge-pill">$500</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Fecha 2</span>
-            <span class="badge badge-primary badge-pill">$750</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Fecha 3</span>
-            <span class="badge badge-primary badge-pill">$600</span>
-          </li>
-          <!-- Fin de Datos Estáticos -->
-  
-          <!-- Itera sobre tus datos de ventas para mostrar cada venta -->
-          {% for venta in ventas %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <span>{{ venta.fecha }}</span>
-              <span class="badge badge-primary badge-pill">${{ venta.monto }}</span>
-            </li>
-          {% endfor %}
+        <h3 class="card-title">Caducidad y Vencimiento</h3>
+        <ul id="productosList">
+          <!-- Datos de la lista se llenarán dinámicamente aquí -->
         </ul>
       </div>
     </div>
@@ -275,88 +258,75 @@
     </div>
   </div>
 <!-- Configuración de los Gráficos con Chart.js -->
-<script>
-  // Datos de ejemplo para los gráficos (reemplázalos con tus propios datos)
-  fetch('http://144.22.133.47:8000/api/stock-product')
-    .then(response => response.json())
-    .then(data => {
-      
-      // Configuración de gráfico de barra
-      var datosBarra = {
-            /*labels: data.productos.map(item => item.id).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
-            datasets: [{
-                label: 'Cantidad de Stock ',
-                data: data.productos.map(item => item.cantidad_stock).slice(0, 10), // Tomar solo los primeros 3 productos como ejemplo,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]*/
-        };
-        
-        var datosLineal = {
-            labels: data.productos.map(item => item.id),
-            datasets: [{
-                label: 'Cantidad en Stock por Producto',
-                data: data.productos.map(item => item.cantidad_stock),
-                fill: false,
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2
-            }]
-        };
+  <script>
+    // Datos de ejemplo para los gráficos (reemplázalos con tus propios datos)
+    fetch(' http://144.22.133.47:8000/api/producto')
+      .then(response => response.json())
+      .then(data => {
+        // Crear un mapa para mapear IDs con nombres
+var idToNombreMapa = new Map(data.productos.map(item => [item.id, item.nombre_producto]));
 
-   // Configuración de gráfico de pastel (ejemplo)
-   var datosPastel = {
-            labels: data.productos.map(item => item.nombre_producto).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
-            datasets: [{
-                data: data.productos.map(item => item.cantidad_stock).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
-                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
-                hoverBackgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)']
-            }]
-        };
+        // Configuración de gráfico de barra
+        var datosBarra = {
+  labels: data.productos.map(item => (item.nombre_producto.length > 6 ? item.nombre_producto.substring(0, 6) : item.nombre_producto)),
+  datasets: [{
+    label: 'Cantidad de Stock',
+    data: data.productos.map(item => item.cantidad_stock),
+    backgroundColor: 'rgba(60, 199, 132, 0.5)',
+    borderColor: 'rgba(60, 199, 132, 0.5)',
+    borderWidth: 1
+  }]
+};
 
-  // Configuración de los gráficos
-  var opciones = {
-    responsive: true,
-    maintainAspectRatio: false
-  };
+    
+    // Configuración de gráfico de pastel (ejemplo)
+    var datosPastel = {
+              labels: data.productos.map(item => item.nombre_producto).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
+              datasets: [{
+                  data: data.productos.map(item => item.cantidad_stock).slice(2, 5), // Tomar solo los primeros 3 productos como ejemplo
+                  backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
+                  hoverBackgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)']
+              }]
+          };
 
-  // Inicialización de los gráficos
-  var ctxBarra = document.getElementById('graficoBarra').getContext('2d');
-  new Chart(ctxBarra, {
-    type: 'bar',
-    data: datosBarra,
-    options: opciones
-  });
+    // Configuración de los gráficos
+    var opciones = {
+      responsive: true,
+      maintainAspectRatio: false,
+    };
 
-  var ctxLineal = document.getElementById('graficoLineal').getContext('2d');
-  new Chart(ctxLineal, {
-    type: 'line',
-    data: datosLineal,
-    options: opciones
-  });
 
-  var ctxPastel = document.getElementById('graficoPastel').getContext('2d');
-  new Chart(ctxPastel, {
-    type: 'doughnut',
-    data: datosPastel,
-    options: opciones
-  });
+// Inicialización de los gráficos
+    var ctxBarra = document.getElementById('graficoBarra').getContext('2d');
+    new Chart(ctxBarra, {
+      type: 'bar',
+      data: datosBarra,
+      options: opciones,
+ 
+    });
 
-})
+    var ctxPastel = document.getElementById('graficoPastel').getContext('2d');
+    new Chart(ctxPastel, {
+      type: 'doughnut',
+      data: datosPastel,
+      options: opciones
+    });
 
-    .catch(error => console.error('Error al obtener datos:', error));
-</script>
+  })
+
+      .catch(error => console.error('Error al obtener datos:', error));
+  </script>
 <!-- Agrega este script al final del cuerpo de tu documento -->
 <script>
   // Datos de ejemplo para los gráficos (reemplázalos con tus propios datos)
-  fetch('http://192.168.0.7:8000/api/facturas')
+  fetch('http://144.22.133.47:8000/api/factura')
     .then(response => response.json())
     .then(data => {
       // Utiliza el método reduce para sumar los totales de ventas
-      const totalVentas = data.map(item => item.total).reduce((total, current) => total + current, 0);
+      const totalVentas = data.facturas.map(item => item.total).reduce((total, current) => total + current, 0);
 
       // Actualiza el elemento HTML con el id 'totalVentas' con el total calculado
-      document.getElementById('totalVentas').innerText = totalVentas.toLocaleString(); // Puedes usar toLocaleString para darle formato a los números
+      document.getElementById('totalVentas').innerText = '$'+ totalVentas.toLocaleString(); // Puedes usar toLocaleString para darle formato a los números
 
      })
     .catch(error => console.error('Error al obtener datos:', error));
@@ -380,6 +350,169 @@
       })
       .catch(error => console.error('Error al obtener datos:', error));
   </script>
-  
+
+
+<script>
+  // Hacer la solicitud a la API
+  fetch('http://144.22.133.47:8000/api/factura')
+    .then(response => response.json())
+    .then(data => {
+      // Extraer datos relevantes de la respuesta JSON
+      const facturas = data.facturas;
+    // Formatear las fechas en el formato deseado (YYYY-MM-DD)
+    const labels = facturas.map(factura => {
+      const fecha = new Date(factura.fecha);
+      const year = fecha.getFullYear();
+      const month = String(fecha.getMonth() + 1).padStart(2, '0'); // Se suma 1 ya que los meses son base 0
+      const day = String(fecha.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    });
+      const ventasData = facturas.map(factura => factura.total);
+      
+      // Asumiendo que tienes un método para calcular el promedio móvil y la variación porcentual
+      const promedioMovilData = calcularPromedioMovil(ventasData);
+      const variacionPorcentualData = calcularVariacionPorcentual(ventasData);
+
+      // Crear el gráfico con Chart.js
+      var ctx = document.getElementById('tendenciasEstacionalesChart').getContext('2d');
+
+      var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Ventas Mensuales',
+              data: ventasData,
+              fill: false,
+              borderColor: 'rgba(75, 192, 192, 1)',
+            },
+            {
+              label: 'Promedio Móvil',
+              data: promedioMovilData,
+              fill: false,
+              borderColor: 'rgba(255, 99, 132, 1)',
+            },
+            {
+              label: 'Variación Porcentual',
+              data: variacionPorcentualData,
+              fill: false,
+              borderColor: 'rgba(255, 205, 86, 1)',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: 'category',
+              labels: labels,
+            },
+          },
+        },
+      });
+    })
+    .catch(error => console.error('Error al obtener datos:', error));
+
+  // Función para calcular el promedio móvil (debes implementarla según tus necesidades)
+// Función para calcular el promedio móvil
+function calcularPromedioMovil(data, ventana = 3) {
+  const promedioMovil = [];
+  for (let i = 0; i < data.length; i++) {
+    const inicioVentana = Math.max(0, i - ventana + 1);
+    const finVentana = i + 1;
+    const subconjunto = data.slice(inicioVentana, finVentana);
+    const suma = subconjunto.reduce((total, valor) => total + valor, 0);
+    const promedio = suma / subconjunto.length;
+    promedioMovil.push(promedio);
+  }
+  return promedioMovil;
+}
+
+// Función para calcular la variación porcentual
+function calcularVariacionPorcentual(data) {
+  const variacionPorcentual = [];
+  for (let i = 1; i < data.length; i++) {
+    const variacion = ((data[i] - data[i - 1]) / data[i - 1]) * 100;
+    variacionPorcentual.push(variacion);
+  }
+  return variacionPorcentual;
+}
+
+</script>
+  <!-- Pronostico de Demandas-->
+
+<script>
+
+
+      // Nueva solicitud dentro del bloque then de la primera solicitud
+      fetch('http://144.22.133.47:8000/api/factura')
+        .then(response => response.json())
+        .then(data => {
+          // Reemplaza ... con tus propios datos
+          var fechas  = data.facturas.map(factura => {
+      const fecha = new Date(factura.fecha);
+      const year = fecha.getFullYear();
+      const month = String(fecha.getMonth() + 1).padStart(2, '0'); // Se suma 1 ya que los meses son base 0
+      const day = String(fecha.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    });
+          var ventasReales = data.facturas.map(factura => factura.total); // Puedes ajustar esto según la estructura de tus datos
+          var demandasPronosticadas = data.facturas.map(factura => factura.total);;
+          // Resto del código para el gráfico de Ventas Reales y Demanda Pronosticada
+          var datosLinealVentas = {
+            labels: fechas,
+            datasets: [
+              {
+                label: 'Ventas Reales',
+                data: ventasReales,
+                fill: false,
+                borderColor: 'rgba(75, 192, 192, 1)',
+              },
+              {
+                label: 'Demanda Pronosticada',
+                data: demandasPronosticadas,
+                fill: false,
+                borderColor: 'rgba(255, 99, 132, 1)',
+              },
+            ],
+          };
+
+          // Inicialización del segundo gráfico de línea
+          var ctxLinealVentas = document.getElementById('graficoLinealVentas').getContext('2d');
+          new Chart(ctxLinealVentas, {
+            type: 'line',
+            data: datosLinealVentas,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        })
+        .catch(error => console.error('Error al obtener datos:', error));
+
+</script>
+<script>
+  // Hacer la solicitud a la API
+ /* fetch('http://34.151.236.58:3000/api/show/next-expired-products')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error en la respuesta de la API: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Obtener la lista y llenarla con los datos de la API
+      var productosList = document.getElementById('productosList');
+
+      data.nextExpiratedProducts.forEach(producto => {
+        var li = document.createElement('li');
+        li.textContent = `${producto.name} - Fecha de Vencimiento: ${producto.expirationDate}`;
+        productosList.appendChild(li);
+      });
+    })
+    .catch(error => console.error('Error al obtener datos:', error));*/
+</script>
 </body>
 </html>
