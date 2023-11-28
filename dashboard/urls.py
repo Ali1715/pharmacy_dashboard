@@ -29,6 +29,6 @@ urlpatterns = [
 
     # URL for handling POST requests
     path('fechas/post/', views.fechas_views_post, name='fechas_views_post'),
-     path('get_services_ia_api_pre/', views.get_services_ia_api_pre, name='get_services_ia_api_pre'),
+    path('get_services_ia_api_pre/', views.get_services_ia_api_pre, name='get_services_ia_api_pre'),
 
 ]

@@ -1,5 +1,3 @@
-// JavaScript
-
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('tuFormulario');
     var fechaInicioInput = document.getElementById('fecha_inicio');
@@ -25,9 +23,46 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             // Manejar la respuesta si es necesario
             console.log(data);
+
+            // Use the dynamic data for the chart
+            var dynamicData = data.data.prediccion.demanda.data;
+            updateChart(dynamicData);
         })
         .catch(error => {
             console.error('Error:', error);
         });
     });
 });
+
+// Function to update the chart with dynamic data
+function updateChart(dynamicData) {
+    var dates = dynamicData.map(item => item.fecha);
+    var totals = dynamicData.map(item => item.total);
+
+    var datosLineas = {
+        labels: dates,
+        datasets: [{
+            label: 'Demand Prediction',
+            data: totals,
+            fill: false,
+            borderColor: 'blue',
+        }],
+    };
+
+    // Obtener el elemento canvas
+    var ctxLineas = document.getElementById('myChart').getContext('2d');
+
+    // Configuración de los gráficos
+    var opciones = {
+        responsive: true,
+        maintainAspectRatio: false,
+    };
+
+
+    // Create a new chart
+    window.myChart = new Chart(ctxLineas, {
+        type: 'line',
+        data: datosLineas,
+        options: opciones,
+    });
+}
