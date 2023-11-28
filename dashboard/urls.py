@@ -18,11 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 
+
 from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.dashboard),
-    path('datos_facturas/', views.datos_facturas, name='datos_facturas'),
+    path('', views.get_services_ia_api_months,),
     path('dashboard_flexmonster', views.dashboard_flexmonster, name='dashboard_flexmonster'),
+  # URL for handling GET requests
+    path('fechas/', views.fechas_views, name='fechas_views_get'),
+
+    # URL for handling POST requests
+    path('fechas/post/', views.fechas_views_post, name='fechas_views_post'),
+     path('get_services_ia_api_pre/', views.get_services_ia_api_pre, name='get_services_ia_api_pre'),
 
 ]

@@ -1,0 +1,71 @@
+
+
+  
+<div class="col-md-6">
+       <!--TextField for pass to vies.py the parameter : "fecha_inicio","fecha_final"-->
+
+       <form id="tuFormulario" action="http://34.151.236.58:3000/api/show/prediction" method="GET">
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio</label>
+            <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" aria-describedby="fecha_inicio" placeholder="Fecha Inicio">
+        </div>
+        <div class="form-group">
+            <label for="fecha_final">Fecha Final</label>
+            <input type="date" class="form-control" id="fecha_final" name="fecha_final" aria-describedby="fecha_final" placeholder="Fecha Final">
+        </div>
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form> 
+    
+    <canvas id="myChart"></canvas>
+    </div>
+    {% load static %}
+<script src="{% static 'url.js' %}"></script>
+
+<script>
+    var dataPredictionsDemanda = {{ data_url_predictions_demanda|safe }};
+
+// Verificar si la variable es un objeto JavaScript
+if (typeof dataPredictionsDemanda === 'string') {
+    // Convertir la cadena JSON a un objeto JavaScript
+    try {
+        dataPredictionsDemanda = JSON.parse(dataPredictionsDemanda);
+    } catch (e) {
+        console.error('Error al analizar JSON:', e);
+        dataPredictionsDemanda = [];
+    }
+}
+    // Extraer fechas y totales de los datos
+    var dates = dataPredictionsDemanda.map(item => item.fecha);
+    var totals = dataPredictionsDemanda.map(item => item.total);
+
+    // Obtener el elemento canvas
+    var ctxLineas = document.getElementById('mychart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Demand Prediction',
+                data: totals,
+                borderColor: 'blue',
+                borderWidth: 2,
+                fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day',
+                    }
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
