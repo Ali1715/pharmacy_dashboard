@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var fechaInicioInput = document.getElementById('fecha_inicio');
     var fechaFinalInput = document.getElementById('fecha_final');
 
+    // Initialize chart instance
+    var ctxLineas = document.getElementById('myChart').getContext('2d');
+    var opciones = {
+        responsive: true,
+        maintainAspectRatio: false,
+    };
+    var myChart = null;
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -26,43 +34,59 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Use the dynamic data for the chart
             var dynamicData = data.data.prediccion.demanda.data;
-            updateChart(dynamicData);
+            var predictionData = data.data.prediccion.prediccion.data;
+            updateChart(myChart, dynamicData, predictionData);
         })
         .catch(error => {
             console.error('Error:', error);
         });
     });
+
+    // Function to update the chart with dynamic data
+    function updateChart(chart, dynamicData, predictionData) {
+        var dates = dynamicData.map(item => formatDate(item.fecha));
+        var demandTotals = dynamicData.map(item => item.total);
+        var predictionTotals = predictionData.map(item => item.total);
+
+        var chartData = {
+            labels: dates,
+            datasets: [
+                {
+                    label: 'Demand Prediction',
+                    data: demandTotals,
+                    fill: false,
+                    borderColor: 'blue',
+                },
+                {
+                    label: 'Predicción',
+                    data: predictionTotals,
+                    fill: false,
+                    borderColor: 'red',
+                },
+            ],
+        };
+
+        if (!chart) {
+            // Create a new chart if it doesn't exist
+            myChart = new Chart(ctxLineas, {
+                type: 'line',
+                data: chartData,
+                options: opciones,
+            });
+        } else {
+            // Update the existing chart
+            myChart.data.labels = chartData.labels;
+            myChart.data.datasets = chartData.datasets;
+            myChart.update(); // Update the chart to reflect the changes
+        }
+    }
+
+    // Function to format date string
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
 });
-
-// Function to update the chart with dynamic data
-function updateChart(dynamicData) {
-    var dates = dynamicData.map(item => item.fecha);
-    var totals = dynamicData.map(item => item.total);
-
-    var datosLineas = {
-        labels: dates,
-        datasets: [{
-            label: 'Demand Prediction',
-            data: totals,
-            fill: false,
-            borderColor: 'blue',
-        }],
-    };
-
-    // Obtener el elemento canvas
-    var ctxLineas = document.getElementById('myChart').getContext('2d');
-
-    // Configuración de los gráficos
-    var opciones = {
-        responsive: true,
-        maintainAspectRatio: false,
-    };
-
-
-    // Create a new chart
-    window.myChart = new Chart(ctxLineas, {
-        type: 'line',
-        data: datosLineas,
-        options: opciones,
-    });
-}

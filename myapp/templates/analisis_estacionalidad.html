@@ -61,6 +61,7 @@ var datosLineas = {
     datasets: dataEstacionalidad.map(item => {
         return {
             label: item.productName.length > 6 ? item.productName.substring(0, 6) : item.nombre_producto,
+            hidden: true,
             data: item.stockByDate
                 .filter(stockData => stockData.date.startsWith('2023'))
                 .map(stockData => {
@@ -93,5 +94,6 @@ function getRandomColor() {
         type: 'line',
         data: datosLineas,
         options: opciones,
+    
     });
   </script>
